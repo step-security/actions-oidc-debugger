@@ -3,7 +3,7 @@ package actionsoidc
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"net/url"
@@ -30,7 +30,7 @@ type ActionsJWT struct {
 func GetEnvironmentVariable(e string) (string, error) {
 	value := os.Getenv(e)
 	if value == "" {
-		return "", fmt.Errorf("missing %s from envrionment", e)
+		return "", fmt.Errorf("missing %s from environment", e)
 	}
 	return value, nil
 }
@@ -101,7 +101,7 @@ func (c *ActionsOIDCClient) GetJWT() (*ActionsJWT, error) {
 		return nil, fmt.Errorf("received non-200 from jwt api: %s", http.StatusText((response.StatusCode)))
 	}
 
-	rawBody, err := ioutil.ReadAll(response.Body)
+	rawBody, err := io.ReadAll(response.Body)
 	if err != nil {
 		return nil, err
 	}
