@@ -10,6 +10,6 @@ inputs:
     required: true
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/step-security/actions-oidc-debugger:v1.0.2@sha256:2efd05a360fc43e47d57714cc9e29502dbf998d675e410c9c528e70e20cda62c' #v1.0.2
+  image: 'docker://ghcr.io/step-security/actions-oidc-debugger:v1.0.3@sha256:731f7208bc33c7c15b4c925436976a3bf9bd27c93202513587cd5244a34f7ca3' #v1.0.3
   args:
     - ${{ inputs.audience }}
